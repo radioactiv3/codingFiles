@@ -10,7 +10,7 @@ unsigned long int catalan (int n){
     arr[1] = 1;
     for(i=2;i<=n;i++)
     {
-        int  j = 0 ;
+      int  j = 0 ;
        arr[i]= 0;
        for(j=0;j<i;j++)
             arr[i]+=arr[j]*arr[i-j-1];
