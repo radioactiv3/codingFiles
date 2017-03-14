@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<iostream>
 #include<string.h>
+#include<fstream>
 using namespace std;
 
 #define Alphabet_Size 26
@@ -80,11 +81,27 @@ int main()
 
     // Construct trie
     int i;
-    for (i = 0; i < ARRAY_SIZE(keys); i++)
-        insert(root, keys[i]);
+    ifstream infile ;
+    char word[100];
+    infile.open("demofile.txt"); //add your file here
+
+    if(!infile.is_open())
+        cout<<"cant open :: Error"<<endl;
+    else
+        cout<< "Success in opening file";
+    infile>>word ;
+
+    cout<<word;
+    while(infile>>word)
+    {
+       cout<<word<<endl;
+       insert(root, word);
+    }
+    /*for (i = 0; i < ARRAY_SIZE(keys); i++)
+        insert(root, keys[i]); */
 
     // Search for different keys
-    cout<<"the"<< output[search(root, "the")]<<endl;
+    cout<<"its"<< output[search(root, "its")]<<endl;
    cout<<"these"<< output[search(root, "these")]<<endl;
    cout<<"their"<< output[search(root, "their")]<<endl ;
    cout<<"thaw"<< output[search(root, "thaw")]<<endl ;
